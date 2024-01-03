@@ -1,0 +1,81 @@
+
+
+<aside class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full  
+          border-r border-gray-200 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700 "
+       aria-label="Sidenav" id="drawer-navigation" style="margin-left:-20px; background-color: #566b90; ">
+
+       <div  style="overflow-x: hidden; overflow-y: scroll; " class="overflow-y-auto py-2 sidemenu">
+
+        <ul class="space-y-1" style="margin-left: 2px; ">
+          
+          
+             <li>
+                <a href="{% url 'dashboard:home' %}"
+                   class="">
+                    <i class="fa-solid fa-house "
+                       aria-hidden="true">
+                    </i>
+                    <span class="ml-3">Home</span>
+                </a>
+            </li>
+            
+            <!-- Employee -->
+            <li>
+                <a href="{% url 'Employee:employee' %}"
+                   class="">
+                    <i class="fa fa-user-circle "
+                       aria-hidden="true">
+                    </i>
+                    <span class="ml-3"> Employee </span>
+                </a>
+            </li>
+        
+            <!-- PF & ESI -->
+            <li>
+                <a href="{% url 'Employee:pf_esi' %}"
+                   class="">
+                    <i class="fas fa-address-book "
+                       aria-hidden="true">
+                    </i>
+                    <span class="ml-3"> PF & ESI </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'Employee:emp_banks' %}"
+                   class="">
+                    <i class="fas fa-landmark"
+                       aria-hidden="true">
+                    </i>
+                    <span class="ml-3"> Bank Details </span>
+                </a>
+            </li>
+
+              <!-- Contact -->
+              <li>
+                <a href=""
+                   class="">
+                    <i class="fa fa-clock-o "
+                       aria-hidden="true">
+                    </i>
+                    <span class="ml-3"> Attendance </span>
+                </a>
+            </li>
+
+            <li>
+                <a href=""
+                   class="">
+                    <i class="fa fa-id-card"
+                       aria-hidden="true">
+                    </i>
+                    <span class="ml-3"> Attendance Record </span>
+                </a>
+            </li>
+           
+
+        </ul>
+
+
+      
+    </div>
+</aside>

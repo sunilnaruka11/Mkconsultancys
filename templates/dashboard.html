@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+        <title>
+            {% block title %}  {% endblock title %} | Enterprise resource planning
+        </title>
+
+        <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+        
+        
+        <!-- <script type="text/javascript" src="{% static 'js/theme_check.js' %}"></script>
+         -->
+
+<script src="https://kit.fontawesome.com/0527a7a8a4.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/customiz.css' %}">
+
+
+<!-- application form  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<!-- data table  -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+<!-- excle export table  -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+
+
+    </head>
+    <body>
+        
+        
+        <div class="antialiased bg-gray-50 dark:bg-gray-900">
+            {% include "_base_part/navbar.html" %}
+            {% include "_base_part/sidebar.html" %}
+
+            {% block content %} {% endblock content %}
+
+
+        </div>
+
+
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    {% include "dashboard/messages/success.html" %}
+                {% elif message.tags == 'error' %}
+                    {% include "dashboard/messages/error.html" %}
+                {% elif message.tags == 'warning' %}
+                    {% include "dashboard/messages/warning.html" %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
+    </body>
+</html>

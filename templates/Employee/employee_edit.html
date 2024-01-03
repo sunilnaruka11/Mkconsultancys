@@ -1,0 +1,160 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+    Lead Edit 
+{% endblock title %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+     <main class="p-2 md:ml-64 h-auto pt-10 min-h-screen bg-gray-50 dark:bg-gray-900">
+        <section class="bg-gray dark:bg-gray-900">
+
+            <div class="py-8 px-0 mx-auto max-w-screen-xl sm:py-16 lg:px-0">
+              
+                <div class="col-lg-12">
+                    <div class="card recent-sales overflow-auto">
+                    <!-- Left side customer registration  -->
+                     <div class="container">
+                        <h3 style="text-align:center"> Lead Details Edit  </h3>
+                     
+                        <form class="row g-3 m-2" action="{% url 'dashboard:leads_updates' pk=lead_details.pk %}" method="post">
+                          {% csrf_token %}
+                         
+                         <div class="col-md-3">
+                            <label  class="form-label"> First Name </label>
+                            <input type="text" class="form-control" id="" name="FirstName" value="{{ lead_details.first_name }}">
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <label  class="form-label"> Last Name</label>
+                            <input type="text" class="form-control" id="" name="LastName" value="{{ lead_details.last_name }}">
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <label  class="form-label">Account Name </label>
+                        <input type="text" class="form-control" id="" placeholder="" name="AccountName" value="{{ lead_details.account_name }}">
+                          </div>
+                          <div class="col-md-3">
+                            <label class="form-label"> Email </label>
+                            <input type="email" class="form-control" id="" placeholder="abc@example.com" name="Email" value="{{ lead_details. }}">
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <label  class="form-label"> Phone Number  </label>
+                            <input type="text" class="form-control" id="" name="PhoneNo" value="{{ lead_details.phone_number }}">
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <label  class="form-label">Title </label>
+                            <input type="text" class="form-control" id="" name="title" value="{{ lead_details.title }}">
+                          </div>
+
+                          <div class="col-md-3">
+                            <label class="form-label">Website </label>
+
+                            <input type="text" class="form-control" id="" name="website" value="{{ lead_details.website }}">
+                          </div>
+                  <hr>
+                    <h6 style="color: red; margin: 0px;"> Address : </h6>                          
+                          <div class="col-md-3">
+                            <label  class="form-label">Street </label>
+                            <input type="text" class="form-control" id="" name="Street" value="{{ lead_details.street }}">
+                          </div>
+                          
+
+                          <div class="col-md-3">
+                            <label  class="form-label">City </label>
+                            <input type="text" class="form-control" id="" name="City" value="{{ lead_details.city }}">
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <label  class="form-label">Country </label>
+                            <input type="text" class="form-control" id="" name="Country" value="{{ lead_details.country }}">
+                          </div>
+                          
+                          <div class="col-md-3">
+                            <label  class="form-label">Postal Code </label>
+                            <input type="text" class="form-control" id="" name="Postal" value="{{ lead_details.pincode }}">
+                          </div>
+                          
+
+                          <div class="col-md-3">
+                            <label  class="form-label"> Status </label>
+                            <select id="" class="form-select" name="Status">
+                                <option value="">Choose Status ...</option>
+                                {% for status in status_list %}
+                                <option value="{{ status.id }}" {% if status.id == lead_details.lead_status.id %} selected {% endif %}>{{ status.lead_status_name }} </option>
+                                {% endfor %}
+                              </select>
+                          </div>
+
+
+                          <div class="col-md-3">
+                            <label  class="form-label">Source </label>
+                            <select id="inputState" class="form-select" name="Source">
+                                <option value="">Choose Source ...</option>
+                                {% for source in source_list %}
+                                <option value="{{ source.id }}" {% if source.id == lead_details.lead_source.id %} selected {% endif %} >{{ source.lead_source_name }} </option>
+                                {% endfor %}
+                              </select>
+                          </div>
+
+
+                          <div class="col-md-3">
+                            <label class="form-label">Opportunity Amount </label>
+                            <input type="text" class="form-control" id="" name="Opportunity" value="{{ lead_details.opportunity_amount }}">
+                          </div>
+
+                          <div class="col-md-3">
+                            <label  class="form-label">Currency </label>
+                            <select id="" class="form-select" name="Currency">
+                                <option value="">Choose Currency ...</option>
+                                {% for currency in currency_list %}
+                                <option value="{{ currency.id }}" {% if currency.id == lead_details.currence.id %} selected {% endif %} >{{ currency.currence_name }} </option>
+                                {% endfor %}
+                              </select>
+                          </div>
+
+                          <div class="col-md-9">
+                            <label class="form-label">Description </label>
+                            <input type="text" class="form-control" id="" name="Description"  value="{{ lead_details.description }}">
+                          </div>
+
+                          <div class="col-md-3">
+                            <label  class="form-label">Assigned User </label>
+                            <select id="" class="form-select" name="Assigned">
+                                <option value="">Choose Assigned User ...</option>
+                                {% for assigned_user in assigned_user_list %}
+                                <option value="{{ assigned_user.id }}" {% if assigned_user.id == lead_details.agent.id %} selected {% endif %} > {{ assigned_user.first_name }} {{ assigned_user.last_name }}  </option>
+                                {% endfor %}
+                              </select>
+                          </div>
+
+                          <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary" > Update </button>
+                          </div>
+                         </form>
+                         
+                      </div><!-- End Left side customer registration  -->
+                     
+                     
+                     
+                     </div><!-- End Left side columns -->
+            
+                    <!-- Right side columns -->
+                    <div class="col-lg-4">
+            
+                     
+                    
+                    </div><!-- End Right side columns -->
+            
+                  </div>    
+
+            
+        </section>
+    </main>
+
+
+    
+{% endblock content %}

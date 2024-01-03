@@ -1,0 +1,72 @@
+{% extends "dashboard.html" %}
+
+{% block title %}
+    Employee Bank list
+{% endblock title %}
+
+{% block content %}
+
+<style>
+
+</style>
+    <main class="p-4 md:ml-64 h-auto pt-10 min-h-screen bg-gray-50 dark:bg-gray-900">
+        <section class="bg-gray dark:bg-gray-900">
+            <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+               
+               <div class="addbtn">
+             
+                
+            
+               </div>
+                
+              <div style="  margin-top: 25px;">
+                <table id="example" class="display" style="margin-top: 40px;">
+                    <thead>
+                        <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Father's Name </th>
+                            <th> Mobile No. </th>
+                          
+                            <th> Bank Name </th>
+                            <th> IFSC Code </th>
+                            <th> A/C No. </th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                     
+         {% for ele in employee_list %}
+                        <tr>
+                            <td> {{ ele.id }}</td>
+                            <td> {{ele.emp_name}}  </td>
+                            <td> {{ele.emp_father_name}}</td>
+                            <td> {{ele.emp_mobile_no}}</td>
+                           
+                            <td> {{ele.emp_bank_id}}</td>
+                            <td> {{ele.emp_bank_ifsc_code}}</td>
+                            <td> {{ele.emp_bank_ac_no}}</td>
+                           
+                          
+                        </tr>
+                      
+
+                        {% endfor %}
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+              </div>
+                
+              
+
+            
+        </section>
+    </main>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
+    
+{% endblock content %}
