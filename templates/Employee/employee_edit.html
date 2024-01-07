@@ -1,7 +1,7 @@
 {% extends "dashboard.html" %}
 
 {% block title %}
-    Lead Edit 
+Employee Edit 
 {% endblock title %}
 
 {% block content %}
@@ -16,121 +16,154 @@
                     <div class="card recent-sales overflow-auto">
                     <!-- Left side customer registration  -->
                      <div class="container">
-                        <h3 style="text-align:center"> Lead Details Edit  </h3>
+                        <h3 style="text-align:center"> Employee Details Edit  </h3>
                      
-                        <form class="row g-3 m-2" action="{% url 'dashboard:leads_updates' pk=lead_details.pk %}" method="post">
+                        <form class="row g-3 m-2" action="{% url 'Employee:employee_updates' pk=employee_details.pk %}" enctype="multipart/form-data" method="post">
                           {% csrf_token %}
                          
-                         <div class="col-md-3">
-                            <label  class="form-label"> First Name </label>
-                            <input type="text" class="form-control" id="" name="FirstName" value="{{ lead_details.first_name }}">
-                          </div>
-                          
+                         
+                           <div class="col-md-3">
+                              <label  class="form-label"> Employee Code </label>
+                              <input type="text" class="form-control" id="" name="Employeecode" value="{{ employee_details.emp_code }}" required>
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <label  class="form-label"> Name</label>
+                              <input type="text" class="form-control" id="" name="EmployeeName" value="{{ employee_details.emp_name }}">
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <label  class="form-label"> Father's name </label>
+                          <input type="text" class="form-control" id="" placeholder="" name="FatherName" value="{{ employee_details.emp_father_name }}">
+                            </div>
+                            <div class="col-md-3">
+                              <label class="form-label"> DOB </label>
+                              <input type="date" class="form-control" id="" placeholder="abc@example.com" name="DOB" value="{{ employee_details.emp_dob |date:'Y-m-d' }}">
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <label  class="form-label"> Mobile No </label>
+                              <input type="text" class="form-control" id="" name="MobileNo" value="{{ employee_details.emp_mobile_no }}">
+                            </div>
+  
+                            <div class="col-md-3">
+                              <label  class="form-label"> Local Address </label>
+                              <input type="text" class="form-control" id="" name="LocalAddress" value="{{ employee_details.emp_local_address }}">
+                            </div>
+  
+                            <div class="col-md-3">
+                              <label  class="form-label"> Permante Address </label>
+                              <input type="text" class="form-control" id="" name="PermanteAddress" value="{{ employee_details.emp_permante_address }}">
+                            </div>
+  
+                            <div class="col-md-3">
+                              <label  class="form-label"> Permante State </label>
+                              <input type="text" class="form-control" id="" name="PermanteState" value="{{ employee_details.emp_permante_state }}">
+                            </div>
+                            
+                         
+                    <hr>
+                    
+                      <h6 style="color: red; margin: 0px;"> Address Proof : </h6>                          
+                            
                           <div class="col-md-3">
-                            <label  class="form-label"> Last Name</label>
-                            <input type="text" class="form-control" id="" name="LastName" value="{{ lead_details.last_name }}">
-                          </div>
-                          
-                          <div class="col-md-3">
-                            <label  class="form-label">Account Name </label>
-                        <input type="text" class="form-control" id="" placeholder="" name="AccountName" value="{{ lead_details.account_name }}">
-                          </div>
-                          <div class="col-md-3">
-                            <label class="form-label"> Email </label>
-                            <input type="email" class="form-control" id="" placeholder="abc@example.com" name="Email" value="{{ lead_details. }}">
-                          </div>
-                          
-                          <div class="col-md-3">
-                            <label  class="form-label"> Phone Number  </label>
-                            <input type="text" class="form-control" id="" name="PhoneNo" value="{{ lead_details.phone_number }}">
-                          </div>
-                          
-                          <div class="col-md-3">
-                            <label  class="form-label">Title </label>
-                            <input type="text" class="form-control" id="" name="title" value="{{ lead_details.title }}">
-                          </div>
-
-                          <div class="col-md-3">
-                            <label class="form-label">Website </label>
-
-                            <input type="text" class="form-control" id="" name="website" value="{{ lead_details.website }}">
-                          </div>
-                  <hr>
-                    <h6 style="color: red; margin: 0px;"> Address : </h6>                          
-                          <div class="col-md-3">
-                            <label  class="form-label">Street </label>
-                            <input type="text" class="form-control" id="" name="Street" value="{{ lead_details.street }}">
-                          </div>
-                          
-
-                          <div class="col-md-3">
-                            <label  class="form-label">City </label>
-                            <input type="text" class="form-control" id="" name="City" value="{{ lead_details.city }}">
-                          </div>
-                          
-                          <div class="col-md-3">
-                            <label  class="form-label">Country </label>
-                            <input type="text" class="form-control" id="" name="Country" value="{{ lead_details.country }}">
-                          </div>
-                          
-                          <div class="col-md-3">
-                            <label  class="form-label">Postal Code </label>
-                            <input type="text" class="form-control" id="" name="Postal" value="{{ lead_details.pincode }}">
-                          </div>
-                          
-
-                          <div class="col-md-3">
-                            <label  class="form-label"> Status </label>
-                            <select id="" class="form-select" name="Status">
-                                <option value="">Choose Status ...</option>
-                                {% for status in status_list %}
-                                <option value="{{ status.id }}" {% if status.id == lead_details.lead_status.id %} selected {% endif %}>{{ status.lead_status_name }} </option>
+                              <label  class="form-label">Addhar Card No.  </label>
+                              <input type="text" class="form-control" id="" name="AddharNo" value="{{ employee_details.emp_addhar_no }}">
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <label  class="form-label"> Upload Addhar </label>
+                              <input type="file" class="form-control" id="" name="AddharFile" value="{{ employee_details.emp_code }}">
+                            </div>
+                    <hr>
+                            <h6 style="color: red; margin: 0px;"> Bank Details : </h6>  
+                            
+                            <div class="col-md-3">
+                              <label  class="form-label"> Bank Name </label>
+                              <select id="" class="form-select" name="BankName">
+                                  <option value="">Choose Bank ...</option>
+                                  {% for emp_bank in emp_bank_list %}
+                                  <option value="{{ emp_bank.id }}" {% if emp_bank.id == employee_details.emp_bank_id.id %} selected {% endif %}>{{ emp_bank.bank_name }} </option>
+                                  {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <label  class="form-label"> IFCE Code </label>
+                              <input type="text" class="form-control" id="" name="IFCECode" value="{{ employee_details.emp_bank_ifsc_code }}">
+                            </div>
+  
+                            <div class="col-md-3">
+                              <label  class="form-label"> Account No </label>
+                              <input type="text" class="form-control" id="" name="AccountNo" value="{{ employee_details.emp_bank_ac_no }}">
+                            </div>
+                            
+                            <div class="col-md-3">
+                              <label  class="form-label"> Upload Passbook </label>
+                              <input type="file" class="form-control" id="" name="PassbookFile" value="{{ employee_details.emp_code }}">
+                            </div>
+             
+  
+  
+                           <hr>
+                           <h6 style="color: red; margin: 0px;"> Other Details : </h6>  
+  
+                           <div class="col-md-3">
+                            <label  class="form-label"> Designation </label>
+                            <select id="" class="form-select" name="Designation">
+                                <option value="">Choose Designation ...</option>
+                                {% for designation in designation_list %}
+                                <option value="{{ designation.id }}" {% if designation.id == employee_details.emp_designation_id.id %} selected {% endif %} >{{ designation.dasignation_name }} </option>
                                 {% endfor %}
                               </select>
                           </div>
-
-
+  
                           <div class="col-md-3">
-                            <label  class="form-label">Source </label>
-                            <select id="inputState" class="form-select" name="Source">
-                                <option value="">Choose Source ...</option>
-                                {% for source in source_list %}
-                                <option value="{{ source.id }}" {% if source.id == lead_details.lead_source.id %} selected {% endif %} >{{ source.lead_source_name }} </option>
+                            <label  class="form-label"> Category </label>
+                            <select id="" class="form-select" name="Category">
+                                <option value="">Choose Category ...</option>
+                                {% for category in category_list %}
+                                <option value="{{ category.id }}" {% if category.id == employee_details.emp_category_id.id %} selected {% endif %} >{{ category.name }} </option>
                                 {% endfor %}
                               </select>
                           </div>
-
-
+  
                           <div class="col-md-3">
-                            <label class="form-label">Opportunity Amount </label>
-                            <input type="text" class="form-control" id="" name="Opportunity" value="{{ lead_details.opportunity_amount }}">
-                          </div>
-
-                          <div class="col-md-3">
-                            <label  class="form-label">Currency </label>
-                            <select id="" class="form-select" name="Currency">
-                                <option value="">Choose Currency ...</option>
-                                {% for currency in currency_list %}
-                                <option value="{{ currency.id }}" {% if currency.id == lead_details.currence.id %} selected {% endif %} >{{ currency.currence_name }} </option>
+                            <label  class="form-label"> Zone Loation </label>
+                            <select id="" class="form-select" name="ZoneLocation">
+                                <option value="">Choose Zone Loation ...</option>
+                                {% for zone_location in zone_location_list %}
+                                <option value="{{ zone_location.id }}" {% if zone_location.id == employee_details.emp_zone_loation_id.id %} selected {% endif %}>{{ zone_location.zone_location_name }} </option>
                                 {% endfor %}
                               </select>
                           </div>
-
-                          <div class="col-md-9">
-                            <label class="form-label">Description </label>
-                            <input type="text" class="form-control" id="" name="Description"  value="{{ lead_details.description }}">
-                          </div>
-
+  
                           <div class="col-md-3">
-                            <label  class="form-label">Assigned User </label>
-                            <select id="" class="form-select" name="Assigned">
-                                <option value="">Choose Assigned User ...</option>
-                                {% for assigned_user in assigned_user_list %}
-                                <option value="{{ assigned_user.id }}" {% if assigned_user.id == lead_details.agent.id %} selected {% endif %} > {{ assigned_user.first_name }} {{ assigned_user.last_name }}  </option>
+                            <label  class="form-label"> Work Location </label>
+                            <select id="" class="form-select" name="WorkLocation">
+                                <option value="">Choose Work Loation ...</option>
+                                {% for work_location in work_location_list %}
+                                <option value="{{ work_location.id }}" {% if work_location.id == employee_details.emp_work_location_id.id %} selected {% endif %}>{{ work_location.work_location_name }} </option>
                                 {% endfor %}
                               </select>
                           </div>
-
+  
+                            
+                            <div class="col-md-3">
+                              <label class="form-label"> PF No. </label>
+                              <input type="text" class="form-control" id="" name="PFNo" value="{{ employee_details.emp_pf_no }}">
+                            </div>
+  
+                            <div class="col-md-3">
+                              <label class="form-label"> ESI No. </label>
+                              <input type="text" class="form-control" id="" name="ESINo" value="{{ employee_details.emp_esi_no }}">
+                            </div>
+  
+                            <div class="col-md-3">
+                              <label class="form-label"> Salary </label>
+                              <input type="number" class="form-control" id="" name="Salary" value="{{ employee_details.emp_salary_ctc }}">
+                            </div>
+                        
                           <div class="col-md-12">
                             <button type="submit" class="btn btn-primary" > Update </button>
                           </div>

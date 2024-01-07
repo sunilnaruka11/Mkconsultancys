@@ -71,23 +71,26 @@ class Employee(models.Model):
     emp_code = models.CharField(max_length=50)
     emp_name = models.CharField(max_length=50)
     emp_father_name = models.CharField(max_length=100,blank=True)
-    emp_dob = models.DateField(max_length=20,blank=True)
+    emp_dob = models.DateField(max_length=20,blank=True,null=True)
     emp_mobile_no = models.CharField(max_length=20,blank=True)
-    # emp_designation = models.ForeignKey(Dasignation, null=True, on_delete=models.SET_NULL) 
+    
     emp_email = models.EmailField(max_length=200,null=True,blank=True)
 
     emp_permante_address = models.TextField(max_length=300,blank=True)
     emp_permante_state = models.CharField(max_length=100,blank=True)
     emp_local_address = models.TextField(max_length=300,blank=True)
     emp_addhar_no = models.CharField(max_length=15,blank=True)
+    aadhar_file = models.FileField(upload_to='aadhar_card/',null=True, blank=True , default=None)
 
-    emp_bank_id = models.ForeignKey(Bank, null=True, on_delete=models.SET_NULL)  #
+    emp_bank_id = models.ForeignKey(Bank, null=True,blank=True, on_delete=models.SET_NULL)  #
     emp_bank_ifsc_code = models.CharField(max_length=10,null=True,blank=True)
     emp_bank_ac_no = models.CharField(max_length=50,null=True,blank=True)
-
-    emp_category_id = models.ForeignKey(Emp_category, null=True, on_delete=models.SET_NULL)
-    emp_zone_loation_id = models.ForeignKey(Emp_zone_location, null=True, on_delete=models.SET_NULL)
-    emp_work_location_id = models.ForeignKey(Emp_work_location, null=True, on_delete=models.SET_NULL)
+    bank_passbook_file = models.FileField(upload_to='bank_passbook/',null=True, blank=True , default=None)
+    
+    emp_designation_id = models.ForeignKey(Dasignation,blank=True, null=True, on_delete=models.SET_NULL)
+    emp_category_id = models.ForeignKey(Emp_category, null=True,blank=True, on_delete=models.SET_NULL)
+    emp_zone_loation_id = models.ForeignKey(Emp_zone_location, null=True,blank=True, on_delete=models.SET_NULL)
+    emp_work_location_id = models.ForeignKey(Emp_work_location, null=True,blank=True, on_delete=models.SET_NULL)
 
     emp_pf_no = models.CharField(max_length=100,blank=True)
     emp_esi_no = models.CharField(max_length=100,blank=True)

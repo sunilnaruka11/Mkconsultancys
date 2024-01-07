@@ -30,6 +30,9 @@
                           
                             <th> PF No. </th>
                             <th> ESI No. </th>
+
+                            <th> Aadhar No. </th>
+                            <th> Aadhar </th>
                             
                            
                         </tr>
@@ -42,10 +45,13 @@
                             <td> {{ele.emp_name}}  </td>
                             <td> {{ele.emp_father_name}}</td>
                             <td> {{ele.emp_mobile_no}}</td>
-                           
                             <td> {{ele.emp_pf_no}}</td>
                             <td> {{ele.emp_esi_no}}</td>
-                           
+                            <td> {{ele.emp_addhar_no}}</td>
+                            <td class="editbtn">
+                                {% if ele.aadhar_file %} <a href="{{ ele.aadhar_file.url }}" download>Download </a> 
+                                {% else %} No file available {% endif %} 
+                           </td>
                            
                           
                         </tr>

@@ -20,7 +20,7 @@
                </div>
                 
               <div style="  margin-top: 25px;">
-                <table id="example" class="display" style="margin-top: 40px;">
+                <table id="example" class="display nowrap" style="margin-top: 40px;">
                     <thead>
                         <tr>
                             <th> ID </th>
@@ -31,6 +31,7 @@
                             <th> Bank Name </th>
                             <th> IFSC Code </th>
                             <th> A/C No. </th>
+                            <th> Passbook </th>
                            
                         </tr>
                     </thead>
@@ -46,7 +47,10 @@
                             <td> {{ele.emp_bank_id}}</td>
                             <td> {{ele.emp_bank_ifsc_code}}</td>
                             <td> {{ele.emp_bank_ac_no}}</td>
-                           
+                            <td class="editbtn">
+                                {% if ele.bank_passbook_file %} <a href="{{ ele.bank_passbook_file.url }}" download>Download </a> 
+                                {% else %} No file available {% endif %} 
+                           </td>
                           
                         </tr>
                       
@@ -64,9 +68,21 @@
     </main>
 
     <script>
+    //    $(document).ready(function() {
+    //        $('#example').DataTable();
+    //    });
+   
+        
         $(document).ready(function() {
-            $('#example').DataTable();
-        });
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
+        } );
+    
+       
     </script>
     
 {% endblock content %}

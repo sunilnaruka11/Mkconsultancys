@@ -14,7 +14,7 @@
             <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
                
                <div class="addbtn">
-             
+              <a href="{% url 'Employee:employee_add'%}"> Add Employee </a>
                 
             
                </div>
@@ -50,7 +50,7 @@
                             <td> {{ele.emp_work_location_id}}</td>
                             <td class="editbtn"> 
                               
-                               
+                                <a href="{% url 'Employee:employee_edit' pk=ele.pk %}">Edit</a>
                                
                             </td>
                           
