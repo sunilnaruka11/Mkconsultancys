@@ -45,10 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user_accounts',  # new 
+   
     'dashboard',  # new
-    'django_seed',  # new
-    'EmployeeApp',  # new
+  
   
 ]
 
